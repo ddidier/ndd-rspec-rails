@@ -1,8 +1,11 @@
+require 'active_support/core_ext/string/inflections'
+require 'i18n'
+
 module Ndd
   module RSpec
     module Rails
       module Matchers
-        module Model
+        module Model #:nodoc:
 
           # Ensures that an attribute has an associated translation.
           #
@@ -21,7 +24,7 @@ module Ndd
           #     it { is_expected.to have_a_translated_attribute(:comment).in_default_locale }
           #   end
           #
-          def have_a_translated_attribute(attribute)
+          def have_a_translated_attribute(attribute) # rubocop:disable Style/PredicateName
             HaveATranslatedAttribute.new(attribute)
           end
 

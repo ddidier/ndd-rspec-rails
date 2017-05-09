@@ -5,7 +5,7 @@ module Ndd
   module RSpec
     module Rails
       module Matchers
-        module Model
+        module Model #:nodoc:
 
           # Ensures that a model has an associated translation.
           #
@@ -24,7 +24,7 @@ module Ndd
           #     it { is_expected.to have_a_translated_model.in_default_locale }
           #   end
           #
-          def have_a_translated_model
+          def have_a_translated_model # rubocop:disable Style/PredicateName
             HaveATranslatedModel.new
           end
 

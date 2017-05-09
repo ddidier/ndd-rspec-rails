@@ -2,6 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/ddidier/ndd-rspec-rails.png)](http://travis-ci.org/ddidier/ndd-rspec-rails)
 [![Dependency Status](https://gemnasium.com/ddidier/ndd-rspec-rails.png)](https://gemnasium.com/ddidier/ndd-rspec-rails)
+[![Code Climate](https://codeclimate.com/github/ddidier/ndd-rspec-rails/badges/gpa.svg)](https://codeclimate.com/github/ddidier/ndd-rspec-rails)
+[![Test Coverage](https://codeclimate.com/github/ddidier/ndd-rspec-rails/badges/coverage.svg)](https://codeclimate.com/github/ddidier/ndd-rspec-rails/coverage)
 [![Yard Documentation](http://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails)
 
 RSpec utilities for Rails.
