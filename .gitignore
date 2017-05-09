@@ -3,12 +3,9 @@
 # rspec
 /spec/examples.txt
 
-# rdoc
-#rdoc
-
 # rubymine
 /.idea/
 
 # yard
-#doc
-#.yardoc
+doc
+.yardoc

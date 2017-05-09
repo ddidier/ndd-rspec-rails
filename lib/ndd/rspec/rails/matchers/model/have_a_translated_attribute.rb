@@ -4,7 +4,14 @@ module Ndd
       module Matchers
         module Model
 
-          # Ensures that an attribute of a model has a translated name. For example:
+          # Ensures that an attribute has an associated translation.
+          #
+          # More precisely, ensures that
+          #   I18n.t(locale, "activerecord.attributes.snake_case_model_class_name.attribute_name")
+          # returns a value for the default locale (i.e. +I18n.default_locale+)
+          # or all the available locales (i.e. +I18n.available_locales+).
+          #
+          # For example:
           #
           #   RSpec.describe MyModel, type: :model do
           #     # both are equivalent
@@ -19,7 +26,7 @@ module Ndd
           end
 
           # ------------------------------------------------------------------------------------------------------------
-          # Implements #have_a_translated_attribute.
+          # See {#have_a_translated_attribute}.
           #
           class HaveATranslatedAttribute
 

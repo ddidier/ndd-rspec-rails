@@ -1,6 +1,20 @@
 # Ndd RSpec Rails
 
+[![Build Status](https://secure.travis-ci.org/ddidier/ndd-rspec-rails.png)](http://travis-ci.org/ddidier/ndd-rspec-rails)
+[![Dependency Status](https://gemnasium.com/ddidier/ndd-rspec-rails.png)](https://gemnasium.com/ddidier/ndd-rspec-rails)
+[![Yard Documentation](http://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails)
+
 RSpec utilities for Rails.
+
+The API documentation can be find at [RubyDoc](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails).
+
+## Prerequisites
+
+This gem requires RSpec 3.XXX and is tested with:
+
+- Ruby 2.4.x
+- Ruby 2.3.x
+- Ruby 2.2.x
 
 ## Installation
 
@@ -10,17 +24,19 @@ Add this line to your application's Gemfile:
 gem 'ndd-rspec-rails'
 ```
 
-And then execute:
+And then execute `bundle`
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install ndd-rspec-rails
+Or install it yourself with `gem install ndd-rspec-rails`
 
 ## Usage
 
-TODO: Write usage instructions here
+### Model matchers
+
+See the [model matchers documentation](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails/Ndd/RSpec/Rails/Matchers/Model) 
+for more details.
+
+- `have_a_translated_attribute`: ensures that a model has an associated translation;
+- `have_a_translated_model`: ensures that an attribute has an associated translation;
 
 ## Development
 
