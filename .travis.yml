@@ -6,3 +6,8 @@ rvm:
   - 2.2.7
 before_install:
   - gem install bundler -v 1.14.6
+addons:
+  code_climate:
+    repo_token: 9706e71f85fc2b64de770bd8964808d70b0ddfcbc78beaadcc96fd7fc26f5903
+after_success:
+  - bundle exec codeclimate-test-reporter
