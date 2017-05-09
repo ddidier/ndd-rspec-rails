@@ -6,6 +6,9 @@
 # rubymine
 /.idea/
 
+# simplecov
+/coverage/
+
 # yard
 doc
 .yardoc
