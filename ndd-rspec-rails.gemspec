@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir['bin/*', '{lib}/**/*.rb', 'CHANGELOG.md', 'CODE_OF_CONDUCT.md', 'LICENSE', 'README.md']
   spec.require_path = 'lib'
 
-  # spec.add_runtime_dependency
+  spec.add_runtime_dependency 'activesupport', '~> 5.1.0'
 
   spec.add_development_dependency 'bundler', '~> 1.14.0'
   spec.add_development_dependency 'guard', '~> 2.14.0'
