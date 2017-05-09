@@ -1,3 +1,4 @@
+require_relative 'model/have_a_translated_attribute'
 require_relative 'model/have_a_translated_model'
 
 RSpec.configure do |config|
