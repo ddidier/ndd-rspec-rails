@@ -7,29 +7,41 @@ module Ndd
       module Matchers
         module Model
 
+          # Ensures that a model has a translated name. For example:
+          #
+          #   RSpec.describe MyModel, type: :model do
+          #     # both are equivalent
+          #     it { is_expected.to have_a_translated_model }
+          #     it { is_expected.to have_a_translated_model.in_all_available_locales }
+          #
+          #     it { is_expected.to have_a_translated_model.in_default_locale }
+          #   end
+          #
           def have_a_translated_model
             HaveATranslatedModel.new
           end
 
           # ------------------------------------------------------------------------------------------------------------
-          # Ensures that a model has a translated name.
-          #
-          # Examples:
-          #
-          #   RSpec.describe MyModel, type: :model do
-          #     it { is_expected.to have_a_translated_model }
-          #   end
+          # Implements #have_a_translated_model.
           #
           class HaveATranslatedModel
 
             def matches?(model)
               @model = model
-              begin
-                I18n.t(model_name_key, raise: true)
-                return true
-              rescue I18n::MissingTranslationData
-                return false
+              @tested_locales ||= I18n.available_locales
+              @failed_locales = []
+
+              @tested_locales.each do |tested_locale|
+                I18n.with_locale(tested_locale) do
+                  begin
+                    I18n.t(model_name_key, raise: true)
+                  rescue I18n::MissingTranslationData
+                    @failed_locales << tested_locale
+                  end
+                end
               end
+
+              @failed_locales.empty?
             end
 
             def description
@@ -39,12 +51,23 @@ module Ndd
             def failure_message
               message = ''
               message << "expected '#{@model.class}' to have a translated model name\n"
-              message << "but the '#{model_name_key}' key was not found"
+              message << "but the '#{model_name_key}' key was not found\n"
+              message << "for the locales: #{@failed_locales.map { |l| "'#{l}'" }.join(', ')}"
               message
             end
 
             def ==(other)
               matches?(other)
+            end
+
+            def in_all_available_locales
+              @tested_locales = I18n.available_locales
+              self
+            end
+
+            def in_default_locale
+              @tested_locales = [I18n.default_locale]
+              self
             end
 
             # -------------------- private
