@@ -1,0 +1,5 @@
+lib/ndd/rspec/rails.rb 1e2422de629c54b74ae809c0a84247e36544c8a9
+lib/ndd/rspec/rails/matchers.rb ba458eb46a6cc71506b5bfaf20bb467fa9cfaa8c
+lib/ndd/rspec/rails/matchers/model.rb 305a24e2a3b8bde287be274990f490de0f78d12e
+lib/ndd/rspec/rails/matchers/model/have_a_translated_model.rb 8047f8eb120897486f0a99e0c4af5383c56557d3
+lib/ndd/rspec/rails/matchers/model/have_a_translated_attribute.rb 83583c2a523f29c628e4a4901b212417a7de7be9

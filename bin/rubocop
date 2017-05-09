@@ -1,0 +1,22 @@
+#!/bin/bash
+
+APPLICATION_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+function _rubocop() {
+    local txt_orange='\e[38;5;214m'
+    local txt_reset='\e[0m'
+
+    pushd $APPLICATION_DIR > /dev/null \
+    && \
+    rubocop \
+        -D -R \
+        --format html -o tmp/rubocop.html \
+        --format progress \
+        --format offenses \
+    ; \
+    echo -e "${txt_orange}HTML report was generated at:\n  file://$APPLICATION_DIR/tmp/rubocop.html${txt_reset}" \
+    ; \
+    popd > /dev/null
+}
+
+_rubocop $@

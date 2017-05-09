@@ -1,0 +1,20 @@
+# The default configuration file is located at
+# https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+AllCops:
+  TargetRubyVersion: 2.2
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*_spec.rb
+Metrics/LineLength:
+  Max: 120
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
