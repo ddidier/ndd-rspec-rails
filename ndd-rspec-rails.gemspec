@@ -6,7 +6,7 @@ require 'ndd/rspec/rails/version'
 Gem::Specification.new do |spec|
 
   spec.name = 'ndd-rspec-rails'
-  spec.version = Ndd::Rspec::Rails::VERSION
+  spec.version = Ndd::RSpec::Rails::VERSION
   spec.authors = ['David DIDIER']
   spec.email = ['c_inconnu2@yahoo.fr']
 
