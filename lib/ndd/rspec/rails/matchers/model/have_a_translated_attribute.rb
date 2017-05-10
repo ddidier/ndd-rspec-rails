@@ -1,5 +1,6 @@
 require 'active_support/core_ext/string/inflections'
 require 'i18n'
+require 'ndd/rspec/rails/matchers/model/translation_matcher'
 
 module Ndd
   module RSpec
@@ -7,10 +8,10 @@ module Ndd
       module Matchers
         module Model #:nodoc:
 
-          # Ensures that an attribute has an associated translation.
+          # Ensure that an attribute has an associated translation.
           #
-          # More precisely, ensures that
-          #   I18n.t(locale, "activerecord.attributes.snake_case_model_class_name.attribute_name")
+          # More precisely, ensure that
+          #   I18n.t(locale, "activerecord.attributes.{snake_case_class_name}.{snake_case_attribute_name}")
           # returns a value for the default locale (i.e. +I18n.default_locale+)
           # or all the available locales (i.e. +I18n.available_locales+).
           #
@@ -19,7 +20,7 @@ module Ndd
           #   RSpec.describe MyModel, type: :model do
           #     # both are equivalent
           #     it { is_expected.to have_a_translated_attribute(:comment) }
-          #     it { is_expected.to have_a_translated_attribute(:comment).in_all_available_locales }
+          #     it { is_expected.to have_a_translated_attribute(:comment).in_available_locales }
           #
           #     it { is_expected.to have_a_translated_attribute(:comment).in_default_locale }
           #   end
@@ -29,63 +30,50 @@ module Ndd
           end
 
           # ------------------------------------------------------------------------------------------------------------
-          # See {#have_a_translated_attribute}.
+          # Implements {#have_a_translated_attribute}.
           #
-          class HaveATranslatedAttribute
+          class HaveATranslatedAttribute < TranslationMatcher
 
+            # @param attribute [String|Symbol] the attribute to test.
             def initialize(attribute)
+              super()
               @attribute = attribute
             end
 
+            # @param model [Object] the model being tested.
+            # @return [Boolean] true if the attribute has an associated translation, false otherwise.
             def matches?(model)
               @model = model
-              @tested_locales ||= I18n.available_locales
               @failed_locales = []
-
               @tested_locales.each do |tested_locale|
-                I18n.with_locale(tested_locale) do
-                  begin
-                    I18n.t(attribute_name_key, raise: true)
-                  rescue I18n::MissingTranslationData
-                    @failed_locales << tested_locale
-                  end
-                end
+                @failed_locales << tested_locale unless translated?(tested_locale, translation_key)
               end
-
               @failed_locales.empty?
             end
 
+            # @return [String] a description of this matcher.
             def description
-              "have a translated attribute name for '#{@attribute}'"
+              "have a translated attribute name for '#{@attribute}' in #{locales_as_string(@tested_locales)}"
             end
 
+            # @return [String] details about the failure of this matcher.
             def failure_message
               message = ''
-              message << "expected '#{@model.class}' to have a translated attribute name for '#{@attribute}\n"
-              message << "but the '#{attribute_name_key}' key was not found\n"
-              message << "for the locales: #{@failed_locales.map { |l| "'#{l}'" }.join(', ')}"
+              message << "expected '#{@model.class}' to have a translated attribute name for '#{@attribute}'\n"
+              message << "but the '#{translation_key}' key was not found\n"
+              message << "for the locales: #{locales_as_string(@failed_locales)}"
               message
             end
 
-            def in_all_available_locales
-              @tested_locales = I18n.available_locales
-              self
-            end
-
-            def in_default_locale
-              @tested_locales = [I18n.default_locale]
-              self
-            end
-
-            # -------------------- private
+            # -------------------------------------------------------------------------------------------- private -----
             private
 
-            def attribute_name_key
+            # @return [String] the translation key of the attribute.
+            def translation_key
               model_key = @model.class.name.underscore
               attribute_key = @attribute.to_s
               "activerecord.attributes.#{model_key}.#{attribute_key}"
             end
-
           end
 
         end

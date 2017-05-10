@@ -12,6 +12,7 @@ Layout/EmptyLinesAroundClassBody:
 Metrics/BlockLength:
   Enabled: true
   Exclude:
+    - ndd-rspec-rails.gemspec
     - spec/**/*_spec.rb
 Metrics/LineLength:
   Max: 120
