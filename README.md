@@ -13,11 +13,16 @@ The API documentation can be find at [RubyDoc](http://www.rubydoc.info/github/dd
 
 ## Prerequisites
 
-This gem requires RSpec 3.XXX and is tested with:
+This gem requires:
 
-- Ruby 2.4.x
-- Ruby 2.3.x
-- Ruby 2.2.x
+- `activesupport >= 4.0`
+- `rspec >= 3.0`
+
+And is tested with:
+
+- `Ruby 2.4`
+- `Ruby 2.3`
+- `Ruby 2.2`
 
 ## Installation
 

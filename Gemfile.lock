@@ -2,7 +2,8 @@ PATH
   remote: .
   specs:
     ndd-rspec-rails (0.1.0)
-      activesupport (~> 5.1.0)
+      activesupport (>= 4.0, < 6.0)
+      rspec (>= 3.0, < 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -12,6 +13,10 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    appraisal (2.2.0)
+      bundler
+      rake
+      thor (>= 0.14.0)
     ast (2.3.0)
     codeclimate-test-reporter (1.0.7)
       simplecov
@@ -47,7 +52,7 @@ GEM
       ruby_dep (~> 1.2)
     lumberjack (1.0.11)
     method_source (0.8.2)
-    minitest (5.10.1)
+    minitest (5.10.2)
     nenv (0.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -104,6 +109,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appraisal (~> 2.2.0)
   bundler (~> 1.14.0)
   codeclimate-test-reporter (~> 1.0.0)
   guard (~> 2.14.0)
@@ -111,7 +117,6 @@ DEPENDENCIES
   guard-rspec (~> 4.7.0)
   ndd-rspec-rails!
   rake (~> 12.0.0)
-  rspec (~> 3.6.0)
   rubocop (~> 0.48.0)
   simplecov (~> 0.14.0)
   yard (~> 0.9.0)

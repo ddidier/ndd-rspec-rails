@@ -24,15 +24,17 @@ Gem::Specification.new do |spec|
   spec.files = Dir['bin/*', '{lib}/**/*.rb', 'CHANGELOG.md', 'CODE_OF_CONDUCT.md', 'LICENSE', 'README.md']
   spec.require_path = 'lib'
 
-  spec.add_runtime_dependency 'activesupport', '~> 5.1.0'
+  # tested with Appraisals
+  spec.add_runtime_dependency 'activesupport', '>= 4.0', '< 6.0'
+  spec.add_runtime_dependency 'rspec', '>= 3.0', '< 4.0'
 
+  spec.add_development_dependency 'appraisal', '~> 2.2.0'
   spec.add_development_dependency 'bundler', '~> 1.14.0'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.0'
   spec.add_development_dependency 'guard', '~> 2.14.0'
   spec.add_development_dependency 'guard-bundler', '~> 2.1.0'
   spec.add_development_dependency 'guard-rspec', '~> 4.7.0'
   spec.add_development_dependency 'rake', '~> 12.0.0'
-  spec.add_development_dependency 'rspec', '~> 3.6.0'
   spec.add_development_dependency 'rubocop', '~> 0.48.0'
   spec.add_development_dependency 'simplecov', '~> 0.14.0'
   spec.add_development_dependency 'yard', '~> 0.9.0'

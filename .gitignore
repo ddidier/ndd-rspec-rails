@@ -1,5 +1,9 @@
 /tmp/
 
+# appraisals
+/gemfiles/*.lock
+/gemfiles/.bundle
+
 # rspec
 /spec/examples.txt
 
