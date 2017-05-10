@@ -5,6 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/ddidier/ndd-rspec-rails/badges/gpa.svg)](https://codeclimate.com/github/ddidier/ndd-rspec-rails)
 [![Test Coverage](https://codeclimate.com/github/ddidier/ndd-rspec-rails/badges/coverage.svg)](https://codeclimate.com/github/ddidier/ndd-rspec-rails/coverage)
 [![Yard Documentation](http://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails)
+[![Documentation Coverage](https://inch-ci.org/github/ddidier/ndd-rspec-rails.svg)](https://inch-ci.org/github/ddidier/ndd-rspec-rails)
 
 RSpec utilities for Rails.
 
@@ -34,11 +35,12 @@ Or install it yourself with `gem install ndd-rspec-rails`
 
 ### Model matchers
 
-See the [model matchers documentation](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails/Ndd/RSpec/Rails/Matchers/Model) 
+See the [Ndd::RSpec::Rails::Matchers::Model documentation](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails/Ndd/RSpec/Rails/Matchers/Model) 
 for more details.
 
-- `have_a_translated_attribute`: ensures that a model has an associated translation;
-- `have_a_translated_model`: ensures that an attribute has an associated translation;
+- `have_a_translated_attribute`: ensure that a model has an associated translation;
+- `have_a_translated_error`: ensure that an error on a model or an attribute has an associated translation.;
+- `have_a_translated_model`: ensure that an attribute has an associated translation;
 
 ## Development
 
