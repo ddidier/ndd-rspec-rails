@@ -1,6 +1,4 @@
-require 'active_support/core_ext/string/inflections'
-require 'i18n'
-require 'ndd/rspec/rails/matchers/model/translation_matcher'
+require 'ndd/rspec/rails/matchers/translation_matcher'
 
 module Ndd
   module RSpec
@@ -67,24 +65,24 @@ module Ndd
 
             def translation_keys_with_attribute
               model_key = @model.class.name.underscore
-              message_key = @error.to_s
+              error_key = @error.to_s
               attribute_key = @attribute.to_s
               %W[
-                activerecord.errors.models.#{model_key}.attributes.#{attribute_key}.#{message_key}
-                activerecord.errors.models.#{model_key}.#{message_key}
-                activerecord.errors.messages.#{message_key}
-                errors.attributes.#{attribute_key}.#{message_key}
-                errors.messages.#{message_key}
+                activerecord.errors.models.#{model_key}.attributes.#{attribute_key}.#{error_key}
+                activerecord.errors.models.#{model_key}.#{error_key}
+                activerecord.errors.messages.#{error_key}
+                errors.attributes.#{attribute_key}.#{error_key}
+                errors.messages.#{error_key}
               ]
             end
 
             def translation_keys_without_attribute
               model_key = @model.class.name.underscore
-              message_key = @error.to_s
+              error_key = @error.to_s
               %W[
-                activerecord.errors.models.#{model_key}.#{message_key}
-                activerecord.errors.messages.#{message_key}
-                errors.messages.#{message_key}
+                activerecord.errors.models.#{model_key}.#{error_key}
+                activerecord.errors.messages.#{error_key}
+                errors.messages.#{error_key}
               ]
             end
 

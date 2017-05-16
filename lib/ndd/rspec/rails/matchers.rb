@@ -1,3 +1,4 @@
+require_relative 'matchers/controller'
 require_relative 'matchers/model'
 
 module Ndd

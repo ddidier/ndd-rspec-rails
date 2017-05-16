@@ -1,6 +1,4 @@
-require 'active_support/core_ext/string/inflections'
-require 'i18n'
-require 'ndd/rspec/rails/matchers/model/translation_matcher'
+require 'ndd/rspec/rails/matchers/translation_matcher'
 
 module Ndd
   module RSpec
