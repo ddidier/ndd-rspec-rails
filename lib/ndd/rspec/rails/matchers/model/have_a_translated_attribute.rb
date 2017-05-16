@@ -6,32 +6,9 @@ module Ndd
   module RSpec
     module Rails
       module Matchers
-        module Model #:nodoc:
+        module Model
 
-          # Ensure that an attribute has an associated translation.
-          #
-          # More precisely, ensure that
-          #   I18n.t(locale, "activerecord.attributes.{snake_case_class_name}.{snake_case_attribute_name}")
-          # returns a value for the default locale (i.e. +I18n.default_locale+)
-          # or all the available locales (i.e. +I18n.available_locales+).
-          #
-          # For example:
-          #
-          #   RSpec.describe MyModel, type: :model do
-          #     # both are equivalent
-          #     it { is_expected.to have_a_translated_attribute(:comment) }
-          #     it { is_expected.to have_a_translated_attribute(:comment).in_available_locales }
-          #
-          #     it { is_expected.to have_a_translated_attribute(:comment).in_default_locale }
-          #   end
-          #
-          def have_a_translated_attribute(attribute) # rubocop:disable Style/PredicateName
-            HaveATranslatedAttribute.new(attribute)
-          end
-
-          # ------------------------------------------------------------------------------------------------------------
           # Implements {#have_a_translated_attribute}.
-          #
           class HaveATranslatedAttribute < TranslationMatcher
 
             # @param attribute [String|Symbol] the attribute to test.

@@ -10,7 +10,6 @@ Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
 Metrics/BlockLength:
-  Enabled: true
   Exclude:
     - ndd-rspec-rails.gemspec
     - spec/**/*_spec.rb
@@ -19,3 +18,6 @@ Metrics/LineLength:
 
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
+Style/FileName:
+  Exclude:
+    - Appraisals

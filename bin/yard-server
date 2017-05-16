@@ -1,0 +1,9 @@
+#!/bin/bash
+
+APPLICATION_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+function _yard_server() {
+    yard server --reload
+}
+
+_yard_server $@

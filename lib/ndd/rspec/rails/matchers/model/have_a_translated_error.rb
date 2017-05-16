@@ -6,42 +6,9 @@ module Ndd
   module RSpec
     module Rails
       module Matchers
-        module Model #:nodoc:
+        module Model
 
-          # Ensure that an error on a model or an attribute has an associated translation.
-          #
-          # More precisely, ensure that (with all parameters being snake case) one of
-          #   I18n.t(locale, "activerecord.errors.models.{class_name}.attributes.{attribute_name}.{error_key}")
-          #   I18n.t(locale, "activerecord.errors.models.{class_name}.{error_key}")
-          #   I18n.t(locale, "activerecord.errors.messages.{error_key}")
-          #   I18n.t(locale, "errors.attributes.{attribute_name}.{error_key}")
-          #   I18n.t(locale, "errors.messages.{error_key}")
-          # returns a value for the default locale (i.e. +I18n.default_locale+)
-          # or all the available locales (i.e. +I18n.available_locales+).
-          #
-          # For example:
-          #
-          #   RSpec.describe MyModel, type: :model do
-          #     # both are equivalent
-          #     it { is_expected.to have_a_translated_error(:duplicate) }
-          #     it { is_expected.to have_a_translated_error(:duplicate).in_available_locales }
-          #
-          #     it { is_expected.to have_a_translated_error(:duplicate).in_default_locale }
-          #
-          #     # both are equivalent
-          #     it { is_expected.to have_a_translated_error(:duplicate).on_attribute(:comments) }
-          #     it { is_expected.to have_a_translated_error(:duplicate).on_attribute(:comments).in_available_locales }
-          #
-          #     it { is_expected.to have_a_translated_error(:duplicate).on_attribute(:comments).in_default_locale }
-          #   end
-          #
-          def have_a_translated_error(message) # rubocop:disable Style/PredicateName
-            HaveATranslatedError.new(message)
-          end
-
-          # ------------------------------------------------------------------------------------------------------------
           # Implements {#have_a_translated_error}.
-          #
           class HaveATranslatedError < TranslationMatcher
 
             # @param error [String|Symbol] the error to test.
@@ -51,6 +18,7 @@ module Ndd
             end
 
             # Set the attribute of the error to test.
+            # @param attribute [String|Symbol] the attribute associated to the error to test.
             # @return self
             def on_attribute(attribute)
               @attribute = attribute

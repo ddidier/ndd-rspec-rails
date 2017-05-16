@@ -5,7 +5,7 @@ module Ndd
   module RSpec
     module Rails
       module Matchers
-        module Model #:nodoc:
+        module Model
 
           # Base class for matchers dealing with translation.
           class TranslationMatcher
