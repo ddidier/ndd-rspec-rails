@@ -38,14 +38,15 @@ Or install it yourself with `gem install ndd-rspec-rails`
 
 ## Usage
 
+### Controller matchers
+
+- `have_a_translated_flash`: ensure that a flash message has an associated translation ([documentation](http://www.rubydoc.info/gems/ndd-rspec-rails/Ndd%2FRSpec%2FRails%2FMatchers%2FController:have_a_translated_flash));
+
 ### Model matchers
 
-See the [Ndd::RSpec::Rails::Matchers::Model documentation](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails/Ndd/RSpec/Rails/Matchers/Model) 
-for more details.
-
-- `have_a_translated_attribute`: ensure that a model has an associated translation;
-- `have_a_translated_error`: ensure that an error on a model or an attribute has an associated translation.;
-- `have_a_translated_model`: ensure that an attribute has an associated translation;
+- `have_a_translated_attribute`: ensure that a model has an associated translation ([documentation](http://www.rubydoc.info/gems/ndd-rspec-rails/Ndd%2FRSpec%2FRails%2FMatchers%2FModel:have_a_translated_attribute));
+- `have_a_translated_error`: ensure that an error on a model or an attribute has an associated translation ([documentation](http://www.rubydoc.info/gems/ndd-rspec-rails/Ndd%2FRSpec%2FRails%2FMatchers%2FModel:have_a_translated_error));
+- `have_a_translated_model`: ensure that an attribute has an associated translation ([documentation](http://www.rubydoc.info/gems/ndd-rspec-rails/Ndd%2FRSpec%2FRails%2FMatchers%2FModel:have_a_translated_model));
 
 ## Development
 
