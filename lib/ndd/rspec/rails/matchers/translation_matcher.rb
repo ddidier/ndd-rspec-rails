@@ -43,7 +43,7 @@ module Ndd
           # @param key [String] the key of the translation to lookup.
           # @return [Boolean] true if a translation exists for the given key in the given locale, false otherwise.
           def translated?(locale, key)
-            I18n.with_locale(locale) { I18n.t(key, raise: true) }
+            I18n.with_locale(locale) { I18n.translate!(key, fallback: false) }
             return true
           rescue I18n::MissingTranslationData
             return false
