@@ -1,5 +1,9 @@
 # NDD RSpec Rails changelog
 
+## Version 0.2.2
+
+- Fix translation fallback
+
 ## Version 0.2.1
 
 - Fix missing RSpec require
