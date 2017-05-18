@@ -1,3 +1,4 @@
+require 'rspec'
 require_relative 'controller/have_a_translated_flash'
 
 module Ndd
