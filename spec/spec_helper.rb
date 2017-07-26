@@ -6,6 +6,13 @@ require 'ndd/rspec/rails'
 
 RSpec.configure do |config|
 
+  # Try to configure RSpec ignoring new settings on old versions.
+  def try_to_configure(&block)
+    yield block
+  rescue NoMethodError
+    # empty
+  end
+
   # rspec-expectations config goes here. You can use an alternate assertion/expectation library such as wrong or the
   # stdlib/minitest assertions if you prefer.
   config.expect_with :rspec do |expectations|
@@ -16,8 +23,7 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
 
-    # Comment out for Appraisals
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+    try_to_configure { expectations.include_chain_clauses_in_custom_matcher_descriptions = true }
   end
 
   # rspec-mocks config goes here. You can use an alternate test double library (such as bogus or mocha) by changing
@@ -32,19 +38,16 @@ RSpec.configure do |config|
   # exists only for backwards compatibility in RSpec 3). It causes shared context metadata to be inherited by the
   # metadata hash of host groups and examples, rather than triggering implicit auto-inclusion in groups with matching
   # metadata.
-  # Comment out for Appraisals
-  config.shared_context_metadata_behavior = :apply_to_host_groups
+  try_to_configure { config.shared_context_metadata_behavior = :apply_to_host_groups }
 
   # This allows you to limit a spec run to individual examples or groups you care about by tagging them with `:focus`
   # metadata. When nothing is tagged with `:focus`, all examples get run. RSpec also provides aliases for `it`,
   # `describe`, and `context` that include `:focus` metadata: `fit`, `fdescribe` and `fcontext`, respectively.
-  # Comment out for Appraisals
-  config.filter_run_when_matching :focus
+  try_to_configure { config.filter_run_when_matching :focus }
 
   # Allows RSpec to persist some state between runs in order to support the `--only-failures` and `--next-failure`
   # CLI options. We recommend you configure your source control system to ignore this file.
-  # Comment out for Appraisals
-  config.example_status_persistence_file_path = 'spec/examples.txt'
+  try_to_configure { config.example_status_persistence_file_path = 'spec/examples.txt' }
 
   # Limits the available syntax to the non-monkey patched syntax that is recommended. For more details, see:
   #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
