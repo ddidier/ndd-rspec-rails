@@ -116,6 +116,8 @@ wwtd --parallel
 
 As a reminder...
 
+- update the changelog
+- update the library version
 - update all dependencies in all the environments:
 
 ```bash
@@ -125,9 +127,9 @@ wwtd --only-bundle
 ```
 
 - run the tests in all the environments with `wwtd --parallel`
-- update the changelog
-- update the library version
 - release with `bundle exec rake release`
+
+
 
 ## Contributing
 
