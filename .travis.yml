@@ -6,6 +6,19 @@ rvm:
   - 2.2.7
 before_install:
   - gem install bundler -v 1.15.3
+gemfile:
+  - gemfiles/rails_4.0.gemfile
+  - gemfiles/rails_4.1.gemfile
+  - gemfiles/rails_4.2.gemfile
+  - gemfiles/rails_5.0.gemfile
+  - gemfiles/rails_5.1.gemfile
+  - gemfiles/rspec_3.0.gemfile
+  - gemfiles/rspec_3.1.gemfile
+  - gemfiles/rspec_3.2.gemfile
+  - gemfiles/rspec_3.3.gemfile
+  - gemfiles/rspec_3.4.gemfile
+  - gemfiles/rspec_3.5.gemfile
+  - gemfiles/rspec_3.6.gemfile
 addons:
   code_climate:
     repo_token: 9706e71f85fc2b64de770bd8964808d70b0ddfcbc78beaadcc96fd7fc26f5903
