@@ -11,18 +11,7 @@ RSpec utilities for Rails.
 
 The API documentation can be find at [RubyDoc](http://www.rubydoc.info/github/ddidier/ndd-rspec-rails).
 
-## Prerequisites
 
-This gem requires:
-
-- `activesupport >= 4.0`
-- `rspec >= 3.0`
-
-And is tested with:
-
-- `Ruby 2.4`
-- `Ruby 2.3`
-- `Ruby 2.2`
 
 ## Installation
 
@@ -36,7 +25,22 @@ And then execute `bundle`
 
 Or install it yourself with `gem install ndd-rspec-rails`
 
+
+
 ## Usage
+
+### Prerequisites
+
+This gem requires:
+
+- `activesupport >= 4.0`
+- `rspec >= 3.0`
+
+And is tested with:
+
+- `Ruby 2.4`
+- `Ruby 2.3`
+- `Ruby 2.2`
 
 ### Controller matchers
 
@@ -48,20 +52,73 @@ Or install it yourself with `gem install ndd-rspec-rails`
 - `have_a_translated_error`: ensure that an error on a model or an attribute has an associated translation ([documentation](http://www.rubydoc.info/gems/ndd-rspec-rails/Ndd%2FRSpec%2FRails%2FMatchers%2FModel:have_a_translated_error));
 - `have_a_translated_model`: ensure that an attribute has an associated translation ([documentation](http://www.rubydoc.info/gems/ndd-rspec-rails/Ndd%2FRSpec%2FRails%2FMatchers%2FModel:have_a_translated_model));
 
+
+
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can 
-also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Prerequisites
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the 
-version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, 
-push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+In order to extensively test this library with all the supported versions of Ruby and RSpec, you will need to manage:
+
+- several Ruby environments using [RVM](https://rvm.io/)
+- several gems sets using [Appraisal](https://github.com/thoughtbot/appraisal)
+- several test execution environments (Ruby and gems) using [WWTD](https://github.com/grosser/wwtd)
+
+### Setup
+
+After installing RVM, check out the repository and run `bin/setup` to setup all the environments. This script will:
+
+- create the latest Ruby environment with RVM and an associated gems set using the `.ruby-version`
+and `.ruby-gemset` files:
+
+```bash
+rvm use
+gem install bundler --no-rdoc --no-ri
+bundle install
+```
+
+- install all the required Ruby versions listed in `.travis.yml`. For example:
+
+```bash
+export LOCAL_RUBY_VERSION=2.2.7 \
+ && rvm install ruby-$LOCAL_RUBY_VERSION \
+ && rvm use ruby-$LOCAL_RUBY_VERSION \
+ && gem install bundler --no-rdoc --no-ri
+export LOCAL_RUBY_VERSION=2.3.4 \
+ && rvm install ruby-$LOCAL_RUBY_VERSION \
+ && rvm use ruby-$LOCAL_RUBY_VERSION \
+ && gem install bundler --no-rdoc --no-ri
+export LOCAL_RUBY_VERSION=2.4.1 \
+ && rvm install ruby-$LOCAL_RUBY_VERSION \
+ && rvm use ruby-$LOCAL_RUBY_VERSION \
+ && gem install bundler --no-rdoc --no-ri
+```
+
+- create a `Gemfile.lock` for each set of the dependencies:
+
+```bash
+appraisal install
+```
+
+- install all the dependencies in their associated environment:
+
+```bash
+wwtd --only-bundle
+```
+
+At last, to test this library in all the supported environments, just run:
+
+```bash
+wwtd --parallel
+```
 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ddidier/ndd-rspec-rails. This project is 
 intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the 
 [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+
 
 ## License
 
