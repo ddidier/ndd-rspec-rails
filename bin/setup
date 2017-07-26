@@ -3,6 +3,27 @@ set -euo pipefail
 IFS=$'\n\t'
 set -vx
 
+hash rvm 2>/dev/null || { echo >&2 "RVM is required but not installed. Aborting."; exit 1; }
+
+# Create the latest Ruby environment with RVM and a gemset
+# using the '.ruby-version' and '.ruby-gemset' files.
+rvm use
+gem install bundler --no-rdoc --no-ri
 bundle install
 
-# Do any other automated setup that you need to do here
+# Create other Ruby environments with RVM but without a gemset
+# because WWTD does not use them.
+for ruby in "ruby-2.2.7" "ruby-2.3.4" "ruby-2.4.1"; do
+    rvm install $ruby
+    rvm use $ruby
+    gem install bundler --no-rdoc --no-ri
+done
+
+# Back to the latest Ruby environment with RVM and a gemset
+rvm use
+
+# Create Gemfile.lock for each set of the dependencies
+appraisal install
+
+# Install all the dependencies in their associated environment
+wwtd --only-bundle
