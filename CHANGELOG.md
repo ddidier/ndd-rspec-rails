@@ -1,5 +1,13 @@
 # NDD RSpec Rails changelog
 
+## Version 0.2.3
+
+- Update dependencies minor versions
+- Update documentation
+- Add support for multiple RSpec versions
+- Add Appraisal support to Travis
+- Add WWTD support to Travis
+
 ## Version 0.2.2
 
 - Fix translation fallback

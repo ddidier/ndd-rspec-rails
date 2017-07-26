@@ -112,6 +112,23 @@ At last, to test this library in all the supported environments, just run:
 wwtd --parallel
 ```
 
+### Release
+
+As a reminder...
+
+- update all dependencies in all the environments:
+
+```bash
+bundle update
+appraisal update
+wwtd --only-bundle
+```
+
+- run the tests in all the environments with `wwtd --parallel`
+- update the changelog
+- update the library version
+- release with `bundle exec rake release`
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ddidier/ndd-rspec-rails. This project is 
