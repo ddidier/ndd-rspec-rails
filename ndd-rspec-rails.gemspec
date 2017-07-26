@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rspec', '>= 3.0', '< 4.0'
 
   spec.add_development_dependency 'appraisal', '~> 2.2.0'
-  spec.add_development_dependency 'bundler', '~> 1.14.0'
+  spec.add_development_dependency 'bundler', '~> 1.15.0'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.0'
   spec.add_development_dependency 'guard', '~> 2.14.0'
   spec.add_development_dependency 'guard-bundler', '~> 2.1.0'
